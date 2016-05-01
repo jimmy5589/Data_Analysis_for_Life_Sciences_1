@@ -133,3 +133,15 @@ pnorm(25,23.9,0.43)-pnorm(23,23.9,0.43)
 pnorm(z25)-pnorm(z23)
 # basically the Z is normalized to Normal(0,1)
 
+#
+
+dat=read.csv("mice_pheno.csv")
+dat=na.omit(dat)
+str(dat)
+malechow=dat[dat$Sex=="M" & dat$Diet=="chow",]
+mean(dat[dat$Sex=="M" & dat$Diet=="chow",]$Bodyweight)
+sd(dat[dat$Sex=="M" & dat$Diet=="chow",]$Bodyweight)
+
+set.seed(1)
+X=sample(malechow$Bodyweight, 25)
+mean(X)
