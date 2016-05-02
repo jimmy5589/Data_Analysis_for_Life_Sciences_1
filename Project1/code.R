@@ -138,10 +138,80 @@ pnorm(z25)-pnorm(z23)
 dat=read.csv("mice_pheno.csv")
 dat=na.omit(dat)
 str(dat)
+# MALES
 malechow=dat[dat$Sex=="M" & dat$Diet=="chow",]
-mean(dat[dat$Sex=="M" & dat$Diet=="chow",]$Bodyweight)
-sd(dat[dat$Sex=="M" & dat$Diet=="chow",]$Bodyweight)
+xmean=mean(dat[dat$Sex=="M" & dat$Diet=="chow",]$Bodyweight)
+xsd=sd(dat[dat$Sex=="M" & dat$Diet=="chow",]$Bodyweight)
 
 set.seed(1)
 X=sample(malechow$Bodyweight, 25)
-mean(X)
+Xmean=mean(X)
+
+# Now males HF
+malehf=dat[dat$Sex=="M" & dat$Diet=="hf",]
+ymean=mean(malehf$Bodyweight)
+
+install.packages("rafalib")
+library(rafalib)
+ysd=popsd(malehf$Bodyweight)
+
+set.seed(1)
+Y=sample(malehf$Bodyweight, 25)
+Ymean=mean(Y)
+
+(ymean-xmean)-(Ymean-Xmean)
+
+# FEMALES
+femalechow=dat[dat$Sex=="F" & dat$Diet=="chow",]
+xmean=mean(femalechow$Bodyweight)
+xsd=sd(femalechow$Bodyweight)
+
+set.seed(1)
+X=sample(femalechow$Bodyweight, 25)
+Xmean=mean(X)
+
+# Now females HF
+femalehf=dat[dat$Sex=="F" & dat$Diet=="hf",]
+ymean=mean(femalehf$Bodyweight)
+
+ysd=popsd(femalehf$Bodyweight)
+
+set.seed(1)
+Y=sample(femalehf$Bodyweight, 25)
+Ymean=mean(Y)
+
+abs((ymean-xmean)-(Ymean-Xmean))
+
+(ymean-xmean)
+(Ymean-Xmean)
+#
+
+# CTL exercises
+dat <- na.omit( read.csv("mice_pheno.csv"))
+str(dat)
+
+str(malechow)
+y=malechow$Bodyweight
+str(y)
+ymean=mean(y)
+ysd=popsd(y)
+c(ymean, ysd)
+
+mean(y>ymean-ysd & y<=ymean+ysd)
+
+mean(y>ymean-2*ysd & y<=ymean+2*ysd)
+
+mean(y>ymean-3*ysd & y<=ymean+3*ysd)
+
+
+#
+avgs <- replicate(10000, mean( sample(y, 25)))
+mypar(1,2)
+hist(avgs)
+qqnorm(avgs)
+qqline(avgs)
+
+mean(avgs)
+popsd(avgs)
+
+#
