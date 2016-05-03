@@ -239,13 +239,13 @@ p=1/6
 sd=sqrt(p*(1-p)/100)
 
 z=(avgs-p)/sd
-hist(z)
+qqnorm(z)
+abline(0,1)#confirm it's well approximated with normal distribution
 
 mean(abs(z)>2)
 
 mean(z)
 
-zs=z
 # Code from the solution
 set.seed(1)
 n <- 100
@@ -259,6 +259,8 @@ qqnorm(zs)
 abline(0,1)#confirm it's well approximated with normal distribution
 mean(abs(zs) > 2)
 # End code from Solution
+install.packages("rafalib")
+library(rafalib)
 
 mypar(2,2)
 
@@ -271,4 +273,54 @@ zs <- replicate(10000,{
 }) 
 qqnorm(zs)
 abline(0,1)#confirm it's well approximated with normal distribution
+hist(zs)
 
+#It sucks, solution is a hidden parameter sides
+
+
+ps <- c(0.5,0.5,0.01,0.01)
+ns <- c(5,30,30,100)
+library(rafalib)
+mypar(4,2)
+for(i in 1:4){
+  p <- ps[i]
+  sides <- 1/p
+  n <- ns[i]
+  zs <- replicate(10000,{
+    x <- sample(1:sides,n,replace=TRUE)
+    (mean(x==1) - p) / sqrt(p*(1-p)/n)
+  }) 
+  hist(zs,nclass=7)
+  qqnorm(zs)
+  abline(0,1)
+}
+
+######################
+
+rm(list=ls())
+
+dat=read.csv("femaleMiceWeights.csv")
+X=dat[dat$Diet=="chow",]$Bodyweight
+Y=dat[dat$Diet=="hf",]$Bodyweight
+Xavg=mean(X)
+Xavg
+
+Xvar=var(X)
+Xvar
+Xsd=sqrt(Xvar)
+Xsd
+# that is the same as sd(X)
+
+sd1=sd(X)*sqrt((length(X)-1)/(length(X)))
+mean1=mean(X)
+z=2/sd1
+z
+1-pnorm(z)
+2*(1-pnorm(z))
+
+# Exerc 7
+w=sqrt(length(X))*(2)/sd(X)
+sd(X)
+length(X)
+w
+2*(1-pnorm(w))
