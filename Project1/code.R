@@ -214,4 +214,61 @@ qqline(avgs)
 mean(avgs)
 popsd(avgs)
 
-#
+#CLT exercice 1
+# Dices
+
+dat=read.csv("femaleMiceWeights.csv")
+
+mypar()
+avgs=vector("numeric",10000)
+
+mypar(1,2)
+N=10000  #Number of samples
+n=100  # Number of dice
+set.seed(1)
+
+avgs=replicate(N,mean(sample(1:6, n, replace=TRUE)==6))
+
+hist(avgs)
+p1=mean(avgs)
+sd1=popsd(avgs)
+
+# z = (mean(x==6) - p) / sqrt(p*(1-p)/n) 
+
+p=1/6
+sd=sqrt(p*(1-p)/100)
+
+z=(avgs-p)/sd
+hist(z)
+
+mean(abs(z)>2)
+
+mean(z)
+
+zs=z
+# Code from the solution
+set.seed(1)
+n <- 100
+sides <- 6
+p <- 1/sides
+zs <- replicate(10000,{
+  x <- sample(1:sides,n,replace=TRUE)
+  (mean(x==6) - p) / sqrt(p*(1-p)/n)
+}) 
+qqnorm(zs)
+abline(0,1)#confirm it's well approximated with normal distribution
+mean(abs(zs) > 2)
+# End code from Solution
+
+mypar(2,2)
+
+set.seed(1)
+p <- 0.01
+n <- 100
+zs <- replicate(10000,{
+  x <- sample(1:6,n,replace=TRUE)
+  (mean(x==6) - p) / sqrt(p*(1-p)/n)
+}) 
+qqnorm(zs)
+abline(0,1)#confirm it's well approximated with normal distribution
+

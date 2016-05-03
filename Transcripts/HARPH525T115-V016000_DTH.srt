@@ -1,0 +1,160 @@
+0
+00:00:00,732 --> 00:00:02,690
+Now that we understand what the distribution is
+
+1
+00:00:02,690 --> 00:00:05,030
+we&#39;re going to go back to the mouse weights
+
+2
+00:00:05,030 --> 00:00:10,310
+where we created several differences of the means of two populations
+
+3
+00:00:10,310 --> 00:00:13,310
+under the null where we know there&#39;s no difference.
+
+4
+00:00:13,310 --> 00:00:15,550
+Those were created under the null hypothesis.
+
+5
+00:00:15,550 --> 00:00:17,110
+So I&#39;m going to re-run that.
+
+6
+00:00:17,110 --> 00:00:20,270
+We should have that saved in our script file.
+
+7
+00:00:20,270 --> 00:00:22,500
+So we can just run those very quickly.
+
+8
+00:00:22,500 --> 00:00:26,040
+We&#39;re going to get 10,000 values under the null distribution.
+
+9
+00:00:26,040 --> 00:00:29,810
+10 differences between the two groups.
+
+10
+00:00:29,810 --> 00:00:34,750
+So we earlier found that that was a relatively rare occurrence
+
+11
+00:00:34,750 --> 00:00:39,650
+under the null-- the value that we see with our actual original data
+
+12
+00:00:39,650 --> 00:00:44,590
+where we did, in fact, feed the mice a high-fat diet.
+
+13
+00:00:44,590 --> 00:00:48,070
+Well, so let&#39;s now study the null distribution more carefully.
+
+14
+00:00:48,070 --> 00:00:50,360
+The distribution of those values we created
+
+15
+00:00:50,360 --> 00:00:55,400
+then, those 10,000 values we created, follow the normal distribution.
+
+16
+00:00:55,400 --> 00:00:56,480
+So again, look at that.
+
+17
+00:00:56,480 --> 00:00:58,892
+Let&#39;s make a histogram first.
+
+18
+00:00:58,892 --> 00:00:59,850
+All right, there it is.
+
+19
+00:00:59,850 --> 00:01:00,790
+It&#39;s centered at zero.
+
+20
+00:01:00,790 --> 00:01:04,300
+That&#39;s not surprising, because we created these values under the null.
+
+21
+00:01:04,300 --> 00:01:06,370
+There should be, on average, no difference.
+
+22
+00:01:06,370 --> 00:01:08,230
+We also see quite a bit of variability.
+
+23
+00:01:08,230 --> 00:01:09,960
+This is a random variable.
+
+24
+00:01:09,960 --> 00:01:15,910
+There&#39;s variability coming from just nature and random sampling.
+
+25
+00:01:15,910 --> 00:01:17,930
+So what else can we do here?
+
+26
+00:01:17,930 --> 00:01:21,530
+To study the distribution, we can make a q-q plot
+
+27
+00:01:21,530 --> 00:01:25,850
+to see if the prediction of the central limit theorem holds.
+
+28
+00:01:25,850 --> 00:01:28,740
+In other words, that this distribution is normal.
+
+29
+00:01:28,740 --> 00:01:37,660
+So we can do that using the qqnorm function in R and run that.
+
+30
+00:01:37,660 --> 00:01:43,120
+And we can see it looks like it is, in fact, following
+
+31
+00:01:43,120 --> 00:01:47,360
+a normal distribution pretty much to the dot.
+
+32
+00:01:47,360 --> 00:01:51,093
+So here we had an n of 12.
+
+33
+00:01:51,093 --> 00:01:55,570
+And in this particular case with this particular data,
+
+34
+00:01:55,570 --> 00:01:58,020
+that shows that the central limit theorem
+
+35
+00:01:58,020 --> 00:02:03,240
+is going to be quite useful for doing inference here,
+
+36
+00:02:03,240 --> 00:02:05,240
+for performing inference here.
+
+37
+00:02:05,240 --> 00:02:07,700
+So what we&#39;re going to do next is we&#39;re going
+
+38
+00:02:07,700 --> 00:02:15,540
+to look at some more examples of the central limit theorem
+
+39
+00:02:15,540 --> 00:02:18,890
+with this particular data set.
+
