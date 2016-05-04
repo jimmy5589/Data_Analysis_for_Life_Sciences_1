@@ -358,5 +358,9 @@ tstat
 t.test(X)
 t.test(Y)
 
-t.test(Y,X) # Compute the T-value and Degrees of freedom and p-value
+t.test(Y,X) # Computes the T-value and Degrees of freedom and p-value
+
+# the test based on the CLT approximation is more likely to incorrectly reject the
+# null hypothesis (a false positive), while the t-distribution is more likely to incorrectly accept the null
+# hypothesis (false negative)
 
