@@ -324,3 +324,39 @@ sd(X)
 length(X)
 w
 2*(1-pnorm(w))
+
+# Exerc 8
+# Under the null Hypotesis
+# should be muX=muY
+# SE(avgX-avgY)=sqrt(var(X)/12+var(Y)/12))
+# This is the standard deviation of this statitistic 
+# also known as standard error or SE.
+#
+length(X)
+length(Y)
+varX=var(X)
+varY=var(Y)
+serror=sqrt(varX/length(X)+varY/length(Y))
+serror
+
+# T-stats
+# T-stat is realtive to 1 sample
+# If you consider many samples you end up with T-Distribution
+mean(Y)-mean(X)
+tstat=(mean(Y)-mean(X))/serror
+tstat
+# The larger the absolute value of the t-value, the smaller the p-value, 
+# and the greater the evidence against the null hypothesis
+2*(1-pnorm(tstat))
+
+1 - pt(3,df=3)
+1 - pt(3,df=15)
+1 - pt(3,df=30)
+1 - pnorm(3)
+
+#t.test calculates all the values
+t.test(X)
+t.test(Y)
+
+t.test(Y,X) # Compute the T-value and Degrees of freedom and p-value
+
